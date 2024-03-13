@@ -4,4 +4,4 @@ https://youtu.be/c3255NYOe-o
 1.Створюємо проект
 2.В консолі
     pip install pygame
-0 : 55 : 30
+1 : 25 : 00
