@@ -5,15 +5,24 @@ from copy import deepcopy
 from random import choice, randrange
 
 def check_borders():
-    if figure[i].x < 0 or figure[i].x > WIDTH-1:
+    if not 0 < figure[i].x < WIDTH - 1:
        return  False
     elif figure[i].y > HEGHT - 1 or field[figure[i].y][figure[i].x]:
         return False
     return True
 
+def get_record():
+    try:
+        with open('record.txt', 'r') as f:
+            return  f.readline()
+    except FileNotFoundError:
+        with open('record.txt', 'w') as f:
+            f.write('0')
 
-
-
+def set_record(record, score):
+    rec = max(int(record), score)
+    with open('record.txt', 'w') as f:
+        f.write(str(rec))
 
 pygame.init()# активуємо бібліотеку pygame
 sc = pygame.display.set_mode(RES)
@@ -48,6 +57,19 @@ score = {
         4: 2000
 
         }
+
+while True:
+    record = get_record()
+    dx, rotate = 0, False
+    sc.blit(bg,(0, 0))
+    sc.blit(game_bg,(20, 20))
+    game_sc.blit(game_bg, (0, 0))
+
+    for i in range(lines):
+        pygame.time.wait(200)
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
 
 
 
